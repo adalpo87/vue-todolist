@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+     <header>
+            <img src="assets/img/logo-boolean.png" alt="">
+     </header>
+      <main>
+         <h3 v-if="alertActive">Attenzione! Devi inserire più di tre lettere</h3>
+
+         <input v-model="str" type="text" placeholder="Inserisci testo">
+        
+            <button @click="addStr">Aggiungi</button>
+
+         <div class="lista">
+                <ul>
+                   <li v-for="(fare, index) in toDoList"
+                      :class="fare.checked ? 'checked' : null"
+                      :style="(index === toDoList.length - 1) ? 'border: none' : null"
+                      @click="fare.checked = !fare.checked" 
+                   > 
+                   {{ fare.ToDo }}
+                   
+                   <i   @click.stop="removeTodo(index)"
+                        class="fas fa-times"></i>
+                  </li>
+                
+                </ul>
+            </div>
+      </main>
+  </div>
+
+
+     <script src="assets/js/script.js"></script>
+</body>
+</html>
